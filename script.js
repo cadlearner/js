@@ -1,4 +1,7 @@
 
+const studentName = document.getElementById("studentName").value;
+const rollNumber = document.getElementById("rollNumber").value;
+const className = document.getElementById("className").value;
 
 const subject1 = document.getElementById("subject1").value;
 const subject2 = document.getElementById("subject2").value;
@@ -27,6 +30,9 @@ function studentinfo() {
 
     const output = `
     <h2>Student Information</h2>
+    <p>Name: ${studentName}</p>
+    <p>Roll Number: ${rollNumber}</p>
+    <p>Class: ${className}</p>
     <p>Total Marks: ${totalMarks}</p>
     <p>Percentage: ${percentage.toFixed(2)}%</p>
     <p>Grade: ${grade}</p>
