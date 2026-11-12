@@ -25,9 +25,8 @@ function studentInfo() {
   const marks = [Number(subject1.value), Number(subject2.value), Number(subject3.value), Number(subject4.value), Number(subject5.value)];
   marks.forEach((mark, index) => {
 
-    if (mark < 0 || mark > 100 || mark == '') {
+    if (mark < 0 || mark > 100 || Number.isNaN(mark)) {
       showError(`Please enter valid marks for Subject ${index + 1} (0-100)`);
-      return;
     }
   });
   const totalMarks = marks.reduce((sum, mark) => sum + mark, 0);
@@ -45,13 +44,19 @@ function studentInfo() {
   } else {
     grade = "F";
   }
+const student = {
+    name: studentName.value,
+    rollNumber: rollNumber.value,
+    className: className.value,
+    marks: totalMarks
+};
 
   const output = `
           <ul>
-            <li>Name: ${studentName.value}</li>
-            <li>Roll Number: ${rollNumber.value}</li>
-            <li>Class: ${className.value}</li>
-            <li>Total Marks: ${totalMarks}</li>
+            <li>Name: ${student.name}</li>
+            <li>Roll Number: ${student.rollNumber}</li>
+            <li>Class: ${student.className}</li>
+            <li>Total Marks: ${student.marks}</li>
             <li>Percentage: ${percentage.toFixed(2)}%</li>
             <li>Grade: ${grade}</li>
           </ul>
