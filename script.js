@@ -9,36 +9,54 @@ const subject3 = document.getElementById("subject3")
 const subject4 = document.getElementById("subject4")
 const subject5 = document.getElementById("subject5")
 
-const submitInfo = document.getElementById("submitInfo");
+const form = document.getElementById("studentForm");
 const result = document.getElementById("result");
 const displayResult = document.getElementById("displayResult");
 const display = document.querySelector(".display")
 
-submitInfo.addEventListener("click", studentInfo)
-
+form.addEventListener("submit", studentInfo);
 function showError(message) {
   alert(message);
 }
 
 function studentInfo(e) {
+  e.preventDefault();
 
-  display.classList.add("show")
 
-  const marks = [Number(subject1.value), Number(subject2.value), Number(subject3.value), Number(subject4.value), Number(subject5.value)];
 
-  marks.forEach((mark, index) => {
-    const hasInvalidMarks = marks.some((mark) => {
-      return mark < 0 || mark > 100 || !Number.isFinite(mark);
-    });
-    if (hasInvalidMarks) {
-      showError("Please enter valid marks between 0 and 100");
-      return;
-    }
-  });
+const rawMarks = [
+    subject1.value,
+    subject2.value,
+    subject3.value,
+    subject4.value,
+    subject5.value
+];
 
-  const totalMarks = marks.reduce((sum, mark) => sum + mark, 0);
-  const percentage = (totalMarks / 500) * 100;
-  const averageMarks = totalMarks / marks.length;
+// Step 1: Check empty fields
+const hasEmptyMarks = rawMarks.some(mark => mark.trim() === "");
+
+if (hasEmptyMarks) {
+    showError("Please enter marks for all subjects");
+    return;
+}
+
+// Step 2: Convert strings into numbers
+const marks = rawMarks.map(mark => Number(mark));
+
+// Step 3: Check invalid marks
+const hasInvalidMarks = marks.some(mark =>
+    !Number.isFinite(mark) || mark < 0 || mark > 100
+);
+
+if (hasInvalidMarks) {
+    showError("Please enter valid marks between 0 and 100");
+    return;
+}
+
+// Step 4: Calculate results
+const totalMarks = marks.reduce((sum, mark) => sum + mark, 0);
+const percentage = (totalMarks / 500) * 100;
+const averageMarks = totalMarks / marks.length;
   let grade;
 
   if (percentage >= 90) {
@@ -76,5 +94,6 @@ function studentInfo(e) {
           </ul>
     `
   displayResult.innerHTML = output;
-  e.preventDefault();
+  display.classList.add("show")
+
 }
