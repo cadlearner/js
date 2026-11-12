@@ -12,6 +12,7 @@ const subject5 = document.getElementById("subject5")
 const submitInfo = document.getElementById("submitInfo");
 const result = document.getElementById("result");
 const displayResult = document.getElementById("displayResult");
+const display=document.querySelector(".display")
 
 submitInfo.addEventListener("click", studentInfo)
 
@@ -20,6 +21,7 @@ function showError(message) {
 }
 
 function studentInfo() {
+  display.classList.add("show")
   const marks = [Number(subject1.value), Number(subject2.value), Number(subject3.value), Number(subject4.value), Number(subject5.value)];
   marks.forEach((mark, index) => {
 
