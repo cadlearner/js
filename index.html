@@ -1,13 +1,60 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./style.css" />
+		<title>Student info</title>
+	</head>
+	<body>
+		<div class="main">
+			<div class="form">
+				<h1>Student Information</h1>
+				<form id="studentForm">
+					<label for="studentName">Student Name:</label>
+					<input type="text" id="studentName" name="studentName" /><br /><br />
 
+					<label for="rollNumber">Roll Number:</label>
+					<input type="text" id="rollNumber" name="rollNumber" /><br /><br />
 
-  <script src-="./script.js"></script>
-</body>
+					<label for="className">Class:</label>
+					<input type="text" id="className" name="className" /><br /><br />
+
+					<label for="subject1">Subject 1:</label>
+					<input type="number" id="subject1" name="subject1" /><br /><br />
+
+					<label for="subject2">Subject 2:</label>
+					<input type="number" id="subject2" name="subject2" /><br /><br />
+
+					<label for="subject3">Subject 3:</label>
+					<input type="number" id="subject3" name="subject3" /><br /><br />
+
+					<label for="subject4">Subject 4:</label>
+					<input type="number" id="subject4" name="subject4" /><br /><br />
+
+					<label for="subject5">Subject 5:</label>
+					<input type="number" id="subject5" name="subject5" /><br /><br />
+
+					<button type="button" id="submitInfo">Show Result</button>
+				</form>
+				<div class="output" id="result"></div>
+			</div>
+
+			<div class="display">
+        <h1>Student Result</h1>
+        <div class="result" id="displayResult">
+          <ul>
+            <li>Name: Raj</li>
+            <li>Roll Number: 123</li>
+            <li>Class: 10th</li>
+            <li>Total Marks: 423</li>
+            <li>Percentage: 84.6</li>
+            <li>Grade: A</li>
+          </ul>
+        </div>
+      </div>
+		</div>
+
+		<script src="./script.js"></script>
+	</body>
 </html>
